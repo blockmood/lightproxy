@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>使用 NodeJS 编写规则 | LightProxy</title>
+    <meta name="description" content="基于 whistle 的代理调试软件">
+    <meta name="referrer" content="no-referrer">
+    
+    <link rel="preload" href="/lightproxy/assets/css/0.styles.830b2785.css" as="style"><link rel="preload" href="/lightproxy/assets/js/app.b3344c9b.js" as="script"><link rel="preload" href="/lightproxy/assets/js/2.83077894.js" as="script"><link rel="preload" href="/lightproxy/assets/js/12.05e3226c.js" as="script"><link rel="prefetch" href="/lightproxy/assets/js/10.10937e56.js"><link rel="prefetch" href="/lightproxy/assets/js/11.4228724e.js"><link rel="prefetch" href="/lightproxy/assets/js/13.3ee7d338.js"><link rel="prefetch" href="/lightproxy/assets/js/14.8c88b917.js"><link rel="prefetch" href="/lightproxy/assets/js/15.128dc778.js"><link rel="prefetch" href="/lightproxy/assets/js/3.3332c985.js"><link rel="prefetch" href="/lightproxy/assets/js/4.d9354908.js"><link rel="prefetch" href="/lightproxy/assets/js/5.579c7df6.js"><link rel="prefetch" href="/lightproxy/assets/js/6.7008ef4a.js"><link rel="prefetch" href="/lightproxy/assets/js/7.21716c77.js"><link rel="prefetch" href="/lightproxy/assets/js/8.b6b1e8f3.js"><link rel="prefetch" href="/lightproxy/assets/js/9.f4886267.js">
+    <link rel="stylesheet" href="/lightproxy/assets/css/0.styles.830b2785.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/lightproxy/" class="home-link router-link-active"><!----> <span class="site-name">LightProxy</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"> <a href="https://github.com/alibaba/lightproxy" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"> <a href="https://github.com/alibaba/lightproxy" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/lightproxy/quick-start.html" class="sidebar-link">快速开始</a></li><li><a href="/lightproxy/wireless-proxy.html" class="sidebar-link">无线端代理</a></li><li><a href="/lightproxy/write-rule-with-nodejs.html" class="active sidebar-link">使用 NodeJS 编写规则</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/lightproxy/write-rule-with-nodejs.html#使用" class="sidebar-link">使用</a></li><li class="sidebar-sub-header"><a href="/lightproxy/write-rule-with-nodejs.html#书写" class="sidebar-link">书写</a></li></ul></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>FAQ</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/lightproxy/use-proxy-with-cli.html" class="sidebar-link">命令行如何使用代理</a></li><li><a href="/lightproxy/error-empty-response.html" class="sidebar-link">上不了网 ERR_EMPTY_RESPONSE</a></li><li><a href="/lightproxy/can-not-ues-appstore.html" class="sidebar-link">App Store 打不开</a></li><li><a href="/lightproxy/how-to-check-proxy.html" class="sidebar-link">如何检验代理是否生效</a></li><li><a href="/lightproxy/start-proxy-only.html" class="sidebar-link">如何只开代理，不设置系统代理</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>生态</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/lightproxy/use-with-umi-antd-pro.html" class="sidebar-link">与 umi/antd-pro 一起使用</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>CHANGLOG</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/lightproxy/changelog-1-1-7.html" class="sidebar-link">1.1.7</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="使用-nodejs-编写规则"><a href="#使用-nodejs-编写规则" class="header-anchor">#</a> 使用 NodeJS 编写规则</h1> <p>从 <code>LightProxy</code> 1.0.9 版本开始，我们支持直接使用 <code>NodeJS</code> 书写规则，以解决一些灵活复杂的需求。</p> <h2 id="使用"><a href="#使用" class="header-anchor">#</a> 使用</h2> <p>同样可以输入 <code>/</code> 来获取自动模板</p><p><img alt="image.png" title="image.png" src="https://cdn.nlark.com/yuque/0/2019/png/236311/1577377528257-8dc6bd8d-08f7-4b22-8a3b-6141183122c9.png#align=left&amp;display=inline&amp;height=355&amp;name=image.png&amp;originHeight=1624&amp;originWidth=2424&amp;size=644819&amp;status=done&amp;style=none&amp;width=530" style="max-width:600px;width:530px;"></p><p><img alt="image.png" title="image.png" src="https://cdn.nlark.com/yuque/0/2019/png/236311/1577377528408-135e68e6-59a7-49d3-8197-ca514480f0c7.png#align=left&amp;display=inline&amp;height=358&amp;name=image.png&amp;originHeight=732&amp;originWidth=1092&amp;size=220639&amp;status=done&amp;style=none&amp;width=534" style="max-width:600px;width:534px;"></p> <h2 id="书写"><a href="#书写" class="header-anchor">#</a> 书写</h2> <p>支持行内的写法</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>github<span class="token punctuation">.</span>com<span class="token operator">/</span>alibaba<span class="token operator">/</span>lightproxy scriptfile<span class="token punctuation">:</span><span class="token operator">/</span><span class="token operator">/</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
+
+exports.handleRequest = async (ctx, next) =&gt; {
+  // do sth
+  // ctx.fullUrl 可以获取请求url
+  // ctx.headers 可以获取请求头
+  // ctx.options 里面包含一些特殊的请求头字段，分别可以获取一些额外信息，如请设置的规则等
+  // ctx.method 获取和设置请求方法
+  // const reqBody = await ctx.getReqBody(); 获取请求body的Buffer数据，如果没有数据返回null
+  // const reqText = await ctx.getReqText();  获取请求body的文本，如果没有返回''
+  // const formData = await ctx.getReqForm(); 获取表单对象，如果不是表单，返回空对象{}
+  // ctx.req.body = String| Buffer | Stream | null，修改请求的内容
+  // next方法可以设置next({ host, port });
+  // 只有执行next方法后才可以把正常的请求发送出去
+  const { statusCode, headers } = await next(); 
+  // do sth
+  // const resBody = yield ctx.getResBody();
+  // const resText = yield ctx.getResText();
+  // ctx.status = 404; 修改响应状态码
+  // ctx.set(headers); 批量修改响应头
+  // ctx.set('x-test', 'abc'); 修改响应头
+  // ctx.body = String| Buffer | Stream | null; 修改响应内容
+  ctx.body = 'test';
+};</span><span class="token template-punctuation string">`</span></span> 
+</code></pre></div><p>也可以直接指向一个文件</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>github<span class="token punctuation">.</span>com<span class="token operator">/</span>alibaba<span class="token operator">/</span>lightproxy scriptfile<span class="token punctuation">:</span><span class="token operator">/</span>path<span class="token operator">/</span>to<span class="token operator">/</span>file<span class="token punctuation">.</span>js 
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/lightproxy/wireless-proxy.html" class="prev">无线端代理</a></span> <span class="next"><a href="/lightproxy/use-proxy-with-cli.html">命令行如何使用代理</a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/lightproxy/assets/js/app.b3344c9b.js" defer></script><script src="/lightproxy/assets/js/2.83077894.js" defer></script><script src="/lightproxy/assets/js/12.05e3226c.js" defer></script>
+  </body>
+</html>
